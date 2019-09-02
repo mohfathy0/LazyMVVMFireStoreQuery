@@ -26,7 +26,7 @@ Import the liberaries to your project
 
 def LazyVersion= "1.0.0" or whatever is avialable
     // Lazy MVVM FireStore Query
-   implementation 'com.github.mohfathy0:LazyMVVMFireStoreQuery:$LazyVersion'
+   implementation "com.github.mohfathy0:LazyMVVMFireStoreQuery:$LazyVersion"
 ```
 
 
