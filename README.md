@@ -24,7 +24,7 @@ Import the liberaries to your project
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
-def LazyVersion= "1.0.0" /*or whatever is avialable*/
+    def LazyVersion= "1.0.0" /*or whatever is avialable*/
     // Lazy MVVM FireStore Query
    implementation "com.github.mohfathy0:LazyMVVMFireStoreQuery:$LazyVersion"
 ```
