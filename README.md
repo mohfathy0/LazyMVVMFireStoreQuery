@@ -1,4 +1,5 @@
 # Lazy MVVM FireStore Query
+[![](https://jitpack.io/v/mohfathy0/LazyMVVMFireStoreQuery.svg)](https://jitpack.io/#mohfathy0/LazyMVVMFireStoreQuery)
 
 ## About:
 This is a MVVM ready to use with Firebase FireStore Database Query builder and no need to rewrite the declaration for each Activity or Fragment If you need a new instance of the ViewModel just use new Request code for each Activity or Fragment If you need to get the same exact result and have another Activity or fragment observing the same data just use the same Request Code.
