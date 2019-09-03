@@ -12,14 +12,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainViewModel extends ViewModel {
-    private MainRepository repository;
-    private Map<Integer, MainRepository> repoMap = new HashMap<>();
+public class LazyViewModel extends ViewModel implements ILazyViewModel {
+    private LazyRepository repository;
+    private Map<Integer, LazyRepository> repoMap = new HashMap<>();
     private Map<Integer, LiveData<DataOrException<List<QueryDocumentSnapshot>>>> MainModelMap= new HashMap<>();
 
+    @Override
     public void init(int RequestCode) {
         if (!MainModelMap.containsKey(RequestCode)){
-            repository = new MainRepository();
+            repository = new LazyRepository();
             repoMap.put(RequestCode,repository);
         }
         if (repository == null) {
@@ -35,6 +36,7 @@ public class MainViewModel extends ViewModel {
     */
 
     // this is the only Query I used for the Activity and the 2 fragments
+    @Override
     public LiveData<DataOrException<List<QueryDocumentSnapshot>>> getDataWhereEqualTo(@NonNull String CollectionPath, @NonNull String QueryFiled, @NonNull Object Value, @NonNull int RequestCode) {
          LiveData<DataOrException<List<QueryDocumentSnapshot>>> temp = null;
         if (!MainModelMap.containsKey(RequestCode)){
@@ -53,7 +55,8 @@ public class MainViewModel extends ViewModel {
     /*
      Where Greater Than Or Equal To
      */
-    public LiveData<DataOrException<List<QueryDocumentSnapshot>>> getDataWhereGreaterThanOrEqualTo(@NonNull String CollectionPath,@NonNull String QueryFiled, @NonNull Object Value,@NonNull int RequestCode) {
+    @Override
+    public LiveData<DataOrException<List<QueryDocumentSnapshot>>> getDataWhereGreaterThanOrEqualTo(@NonNull String CollectionPath, @NonNull String QueryFiled, @NonNull Object Value, @NonNull int RequestCode) {
         if (!MainModelMap.containsKey(RequestCode)) {
 
             MainModelMap.put(RequestCode,repository.getQueryResultWhereGreaterThanOrEqualTo(CollectionPath, QueryFiled, Value));
@@ -65,7 +68,8 @@ public class MainViewModel extends ViewModel {
     /*
     Where Less Than Or Equal To
     */
-    public LiveData<DataOrException<List<QueryDocumentSnapshot>>> getDataWhereLessThanOrEqualTo(@NonNull String CollectionPath,@NonNull String QueryFiled, @NonNull Object Value,@NonNull int RequestCode) {
+    @Override
+    public LiveData<DataOrException<List<QueryDocumentSnapshot>>> getDataWhereLessThanOrEqualTo(@NonNull String CollectionPath, @NonNull String QueryFiled, @NonNull Object Value, @NonNull int RequestCode) {
         if (!MainModelMap.containsKey(RequestCode)) {
 
             MainModelMap.put(RequestCode,repository.getQueryResultWhereLessThanOrEqualTo(CollectionPath, QueryFiled, Value));
@@ -79,7 +83,8 @@ public class MainViewModel extends ViewModel {
     /*
     Where Greater Than
     */
-    public LiveData<DataOrException<List<QueryDocumentSnapshot>>> getDataWhereGreaterThan(@NonNull String CollectionPath,@NonNull String QueryFiled, @NonNull Object Value,@NonNull int RequestCode) {
+    @Override
+    public LiveData<DataOrException<List<QueryDocumentSnapshot>>> getDataWhereGreaterThan(@NonNull String CollectionPath, @NonNull String QueryFiled, @NonNull Object Value, @NonNull int RequestCode) {
         if (!MainModelMap.containsKey(RequestCode)) {
 
             MainModelMap.put(RequestCode,repository.getQueryResultWhereGreaterThan(CollectionPath, QueryFiled, Value));
@@ -93,7 +98,8 @@ public class MainViewModel extends ViewModel {
     /*
     Where Less Than
     */
-    public LiveData<DataOrException<List<QueryDocumentSnapshot>>> getDataWhereLessThan(@NonNull String CollectionPath,@NonNull String QueryFiled, @NonNull Object Value,@NonNull int RequestCode) {
+    @Override
+    public LiveData<DataOrException<List<QueryDocumentSnapshot>>> getDataWhereLessThan(@NonNull String CollectionPath, @NonNull String QueryFiled, @NonNull Object Value, @NonNull int RequestCode) {
         if (!MainModelMap.containsKey(RequestCode)) {
 
             MainModelMap.put(RequestCode,repository.getQueryResultWhereGreaterThan(CollectionPath, QueryFiled, Value));

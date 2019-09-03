@@ -18,11 +18,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
- class MainRepository {
-    private static MainRepository instance;
-    public static MainRepository getInstance() {
+ class LazyRepository {
+    private static LazyRepository instance;
+    public static LazyRepository getInstance() {
         if (instance == null) {
-            instance = new MainRepository();
+            instance = new LazyRepository();
         }
         return instance;
     }
